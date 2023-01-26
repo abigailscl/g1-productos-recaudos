@@ -15,7 +15,7 @@ public class ProductoRecaudo {
     @Id
     private String id;
 
-
+    private String codigoProductoRecaudo;
     private String nombre;
     private String temporalidad;
     private String admiteComision;

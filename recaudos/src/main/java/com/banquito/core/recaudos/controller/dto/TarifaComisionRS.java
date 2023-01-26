@@ -1,6 +1,8 @@
 package com.banquito.core.recaudos.controller.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,9 +12,9 @@ import lombok.Data;
 public class TarifaComisionRS implements Serializable {
 
     private String tipoServicio;
-    private String valor;
+    private BigDecimal valor;
     private String estado;
-    private String fechaInicio;
-    private String fechaFin;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin;
 
 }

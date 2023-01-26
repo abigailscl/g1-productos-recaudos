@@ -25,17 +25,17 @@ public class TarifaComisionService {
         return tarifa;
     }
 
-    public TarifaComision obtenerComisionTipoServicio(){
+    public TarifaComision obtenerComisionTipoServicio(String tipoServicio) {
         log.info("Va a consultar la comision de la tarifa con el tipo de servicio: {}");
-        TarifaComision tarifa = this.tarifaComisionRepository.findByTipoServicio("tipoServicio");
-        log.debug("La comision de la tarifa consultada por el nombre es: {} -> {}", "tipoServicio", tarifa);
+        TarifaComision tarifa = this.tarifaComisionRepository.findByTipoServicio(tipoServicio);
+        log.debug("La comision de la tarifa consultada por el nombre es: {} -> {}", tipoServicio, tarifa);
         return tarifa;
     }
 
-    public TarifaComision obtenerComisionEstado(){
+    public TarifaComision obtenerComisionEstado(String estado) {
         log.info("Va a consultar la comision de la tarifa con el estado: {}");
-        TarifaComision tarifa = this.tarifaComisionRepository.findByEstado("estado");
-        log.debug("La comision de la tarifa consultada por el nombre es: {} -> {}", "estado", tarifa);
+        TarifaComision tarifa = this.tarifaComisionRepository.findByEstado(estado);
+        log.debug("La comision de la tarifa consultada por el nombre es: {} -> {}", estado, tarifa);
         return tarifa;
     }
 
@@ -83,5 +83,4 @@ public class TarifaComisionService {
         return codigo;
     }
 
-    
 }

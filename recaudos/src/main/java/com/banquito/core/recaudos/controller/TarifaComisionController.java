@@ -2,8 +2,10 @@ package com.banquito.core.recaudos.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +27,8 @@ public class TarifaComisionController {
     }
 
     @GetMapping("/{codigoTarifaComision}")
-    public ResponseEntity<TarifaComision> getTarifaComision(String codigoTarifaComision) {
+    public ResponseEntity<TarifaComision> getTarifaComision(
+            @PathVariable("codigoTarifaComision") String codigoTarifaComision) {
         log.info("Obteniendo tarifa comision con codigo {}", codigoTarifaComision);
         TarifaComision tarifaComision = tarifaComisionService.obtenerComisionCodigo(codigoTarifaComision);
         if (tarifaComision != null) {
@@ -35,9 +38,10 @@ public class TarifaComisionController {
     }
 
     @GetMapping("/{tipo-servicio}")
-    public ResponseEntity<TarifaComision> getTarifaComisionTipoServicio() {
+    public ResponseEntity<TarifaComision> getTarifaComisionTipoServicio(
+            @PathVariable("tipo-servicio") String tipoServicio) {
         log.info("Obteniendo tarifa comision con tipo de servicio");
-        TarifaComision tarifaComision = tarifaComisionService.obtenerComisionTipoServicio();
+        TarifaComision tarifaComision = tarifaComisionService.obtenerComisionTipoServicio(tipoServicio);
         if (tarifaComision != null) {
             return ResponseEntity.ok(tarifaComision);
         }
@@ -45,9 +49,9 @@ public class TarifaComisionController {
     }
 
     @GetMapping("/{estado}")
-    public ResponseEntity<TarifaComision> getTarifaComisionEstado() {
+    public ResponseEntity<TarifaComision> getTarifaComisionEstado(@PathVariable("estado") String estado) {
         log.info("Obteniendo tarifa comision con estado");
-        TarifaComision tarifaComision = tarifaComisionService.obtenerComisionEstado();
+        TarifaComision tarifaComision = tarifaComisionService.obtenerComisionEstado(estado);
         if (tarifaComision != null) {
             return ResponseEntity.ok(tarifaComision);
         }
@@ -55,7 +59,7 @@ public class TarifaComisionController {
     }
 
     @PostMapping
-    public ResponseEntity<String> crearTarifaComision(TarifaComision tarifaComision) {
+    public ResponseEntity<String> crearTarifaComision(@RequestBody TarifaComision tarifaComision) {
 
         try {
             this.tarifaComisionService.crearTarifaComision(tarifaComision);
@@ -69,7 +73,7 @@ public class TarifaComisionController {
     }
 
     @PutMapping
-    public ResponseEntity<String> actualizarTarifaComision(TarifaComision tarifaComision) {
+    public ResponseEntity<String> actualizarTarifaComision(@RequestBody TarifaComision tarifaComision) {
 
         try {
             this.tarifaComisionService.actualizarTarifaComision(tarifaComision);
